@@ -1,4 +1,4 @@
-{% set version = "1.4.3" %}
+{% set version = "1.5.1" %}
 
 package:
   name: requests-file
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/r/requests-file/requests-file-{{ version }}.tar.gz
-  sha256: 8f04aa6201bacda0567e7ac7f677f1499b0fc76b22140c54bc06edf1ba92e2fa
+  sha256: 07d74208d3389d01c38ab89ef403af0cfec63957d53a0081d8eca738d0247d8e
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -31,7 +31,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: "File transport adapter for Requests"
+  summary: File transport adapter for Requests
 
 extra:
   recipe-maintainers:
