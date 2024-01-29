@@ -1,30 +1,36 @@
-{% set version = "1.5.1" %}
+{% set name = "requests-file" %}
+{% set version = "2.0.0" %}
 
 package:
-  name: requests-file
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/r/requests-file/requests-file-{{ version }}.tar.gz
-  sha256: 07d74208d3389d01c38ab89ef403af0cfec63957d53a0081d8eca738d0247d8e
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/requests-file-{{ version }}.tar.gz
+  sha256: 20c5931629c558fda566cacc10cfe2cd502433e628f568c34c80d96a0cc95972
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
+    - python >=3.7
+    - setuptools >=61.2
+    - setuptools-scm >=3.4.3
     - pip
-    - python
   run:
-    - python
+    - python >=3.7
     - requests >=1.0.0
-    - six
 
 test:
   imports:
     - requests_file
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: http://github.com/dashea/requests-file
